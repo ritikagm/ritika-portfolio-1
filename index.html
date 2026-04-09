@@ -4,199 +4,218 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ritika G M | HCI MS Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-:root {
-  --bg:#0d0d14; --bg2:#12121c; --card:#1a1a28;
-  --accent:#8b5cf6; --accent2:#a78bfa; --teal:#06b6d4;
-  --pink:#ec4899; --text:#e2e8f0; --muted:#94a3b8;
-  --border:#1e1e30;
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0d0d14;--bg2:#12121c;--card:#1a1a28;
+  --accent:#8b5cf6;--accent2:#a78bfa;--teal:#06b6d4;
+  --pink:#ec4899;--text:#e2e8f0;--muted:#94a3b8;--border:#1e1e30;
 }
-html { scroll-behavior:smooth; }
-body { background:var(--bg); color:var(--text); font-family:'Segoe UI',sans-serif; }
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',sans-serif;line-height:1.6;overflow-x:hidden;}
 
 /* NAV */
-nav {
-  position:fixed; top:0; width:100%; z-index:999;
-  background:rgba(13,13,20,0.9); backdrop-filter:blur(16px);
+nav{
+  position:fixed;top:0;width:100%;z-index:999;
+  background:rgba(13,13,20,0.92);backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);
-  padding:14px 48px; display:flex; justify-content:space-between; align-items:center;
+  padding:14px 5%;display:flex;justify-content:space-between;align-items:center;
 }
-.logo { font-size:18px; font-weight:800; background:linear-gradient(135deg,var(--accent2),var(--teal)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.nav-links { display:flex; gap:28px; list-style:none; }
-.nav-links a { color:var(--muted); text-decoration:none; font-size:13px; font-weight:500; transition:color .2s; }
-.nav-links a:hover { color:var(--accent2); }
+.logo{font-size:18px;font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;}
+.nav-links a:hover{color:var(--accent2);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s;}
+.mobile-menu{
+  display:none;position:fixed;top:56px;left:0;right:0;z-index:998;
+  background:rgba(13,13,20,0.97);border-bottom:1px solid var(--border);
+  padding:20px 5%;flex-direction:column;gap:16px;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500;padding:8px 0;border-bottom:1px solid var(--border);}
+.mobile-menu a:last-child{border-bottom:none;}
 
 /* HERO */
-#home {
-  min-height:100vh; display:flex; align-items:center; justify-content:space-between;
-  padding:120px 80px 60px; gap:48px;
+#home{
+  min-height:100vh;display:flex;align-items:center;justify-content:space-between;
+  padding:120px 5% 60px;gap:40px;flex-wrap:wrap;
 }
-.hero-left { flex:1; }
-.hero-badge {
-  display:inline-flex; align-items:center; gap:8px;
-  background:rgba(139,92,246,0.12); border:1px solid rgba(139,92,246,0.3);
-  color:var(--accent2); font-size:12px; padding:6px 14px; border-radius:20px; margin-bottom:28px;
+.hero-left{flex:1;min-width:280px;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);
+  color:var(--accent2);font-size:12px;padding:6px 14px;border-radius:20px;margin-bottom:24px;
 }
-.dot { width:7px; height:7px; border-radius:50%; background:var(--teal); animation:pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-.hero-name { font-size:58px; font-weight:900; line-height:1.05; margin-bottom:12px; }
-.hero-name .grad { background:linear-gradient(135deg,var(--accent2),var(--teal)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.hero-role { font-size:20px; color:var(--muted); margin-bottom:20px; font-weight:400; }
-.hero-desc { font-size:15px; color:var(--muted); max-width:500px; line-height:1.85; margin-bottom:36px; }
-.hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
-.btn-p {
+.dot{width:7px;height:7px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-name{font-size:clamp(36px,6vw,60px);font-weight:900;line-height:1.05;margin-bottom:12px;}
+.hero-name .grad{background:linear-gradient(135deg,var(--accent2),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero-role{font-size:clamp(15px,2.5vw,20px);color:var(--muted);margin-bottom:18px;}
+.hero-desc{font-size:clamp(13px,1.8vw,15px);color:var(--muted);max-width:500px;line-height:1.85;margin-bottom:32px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-p{
   background:linear-gradient(135deg,var(--accent),var(--accent2));
-  color:#fff; padding:12px 26px; border-radius:8px; text-decoration:none;
-  font-size:13px; font-weight:700; transition:transform .2s, opacity .2s;
+  color:#fff;padding:11px 24px;border-radius:8px;text-decoration:none;
+  font-size:13px;font-weight:700;transition:transform .2s,opacity .2s;white-space:nowrap;
 }
-.btn-p:hover { transform:translateY(-2px); opacity:.9; }
-.btn-o {
-  border:1px solid var(--border); color:var(--text); padding:12px 26px;
-  border-radius:8px; text-decoration:none; font-size:13px; font-weight:600; transition:border-color .2s;
+.btn-p:hover{transform:translateY(-2px);opacity:.9;}
+.btn-o{
+  border:1px solid var(--border);color:var(--text);padding:11px 24px;
+  border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;
+  transition:border-color .2s;white-space:nowrap;
 }
-.btn-o:hover { border-color:var(--accent2); }
-.hero-stats { display:flex; gap:36px; margin-top:52px; padding-top:32px; border-top:1px solid var(--border); }
-.stat-n { font-size:26px; font-weight:800; background:linear-gradient(135deg,var(--accent2),var(--teal)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.stat-l { font-size:11px; color:var(--muted); margin-top:2px; }
-.hero-right { flex:0 0 300px; display:flex; justify-content:center; }
-.avatar-wrap {
-  width:260px; height:260px; border-radius:50%;
+.btn-o:hover{border-color:var(--accent2);}
+.hero-stats{display:flex;gap:clamp(16px,4vw,36px);margin-top:44px;padding-top:28px;border-top:1px solid var(--border);flex-wrap:wrap;}
+.stat-n{font-size:clamp(20px,3vw,26px);font-weight:800;background:linear-gradient(135deg,var(--accent2),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat-l{font-size:11px;color:var(--muted);margin-top:2px;}
+.hero-right{display:flex;justify-content:center;align-items:center;}
+.avatar-wrap{
+  width:clamp(180px,20vw,250px);height:clamp(180px,20vw,250px);border-radius:50%;
   background:linear-gradient(135deg,var(--accent),var(--teal));
-  padding:3px; position:relative;
+  padding:3px;
 }
-.avatar-inner {
-  width:100%; height:100%; border-radius:50%; background:var(--card);
-  display:flex; align-items:center; justify-content:center; font-size:80px;
-  position:relative; overflow:hidden;
+.avatar-inner{
+  width:100%;height:100%;border-radius:50%;background:var(--card);
+  overflow:hidden;
 }
-.avatar-glow {
-  position:absolute; width:320px; height:320px; border-radius:50%;
-  background:radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%);
-  top:-30px; left:-30px; pointer-events:none;
-}
+.avatar-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
 
 /* SECTIONS */
-.sec { padding:100px 80px; max-width:1200px; margin:0 auto; }
-.sec-label { color:var(--accent2); font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:3px; margin-bottom:12px; }
-.sec-h { font-size:40px; font-weight:800; margin-bottom:14px; }
-.sec-h span { background:linear-gradient(135deg,var(--accent2),var(--teal)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.sec-sub { color:var(--muted); font-size:15px; max-width:520px; line-height:1.7; margin-bottom:56px; }
-.line { width:50px; height:3px; background:linear-gradient(135deg,var(--accent),var(--teal)); border-radius:2px; margin:20px 0 48px; }
+.sec{padding:80px 5%;max-width:1200px;margin:0 auto;}
+.sec-label{color:var(--accent2);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:3px;margin-bottom:10px;}
+.sec-h{font-size:clamp(26px,4vw,40px);font-weight:800;margin-bottom:12px;}
+.sec-h span{background:linear-gradient(135deg,var(--accent2),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.line{width:50px;height:3px;background:linear-gradient(135deg,var(--accent),var(--teal));border-radius:2px;margin:16px 0 44px;}
 
 /* ABOUT */
-.about-grid { display:grid; grid-template-columns:1.2fr 1fr; gap:56px; align-items:start; }
-.about-p { color:var(--muted); font-size:15px; line-height:1.9; margin-bottom:18px; }
-.about-cards { display:flex; flex-direction:column; gap:14px; }
-.acard {
-  background:var(--card); border:1px solid var(--border); border-radius:12px;
-  padding:18px 20px; display:flex; align-items:center; gap:14px;
-  transition:border-color .2s;
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start;}
+.about-p{color:var(--muted);font-size:14px;line-height:1.9;margin-bottom:16px;}
+.about-cards{display:flex;flex-direction:column;gap:12px;}
+.acard{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:16px 18px;display:flex;align-items:center;gap:14px;transition:border-color .2s;
 }
-.acard:hover { border-color:var(--accent2); }
-.acard-icon { font-size:22px; }
-.acard-title { font-size:13px; font-weight:700; margin-bottom:2px; }
-.acard-sub { font-size:12px; color:var(--muted); }
-.highlight-box {
-  background:linear-gradient(135deg, rgba(139,92,246,0.08), rgba(6,182,212,0.08));
-  border:1px solid rgba(139,92,246,0.2); border-radius:12px;
-  padding:20px 22px; margin-top:24px;
+.acard:hover{border-color:var(--accent2);}
+.acard-icon{
+  width:36px;height:36px;border-radius:8px;flex-shrink:0;
+  background:rgba(139,92,246,0.12);display:flex;align-items:center;justify-content:center;
 }
-.highlight-box p { font-size:14px; color:var(--muted); line-height:1.7; }
-.highlight-box strong { color:var(--accent2); }
+.acard-icon i{font-size:15px;color:var(--accent2);}
+.acard-icon.teal-bg{background:rgba(6,182,212,0.12);}
+.acard-icon.teal-bg i{color:var(--teal);}
+.acard-icon.pink-bg{background:rgba(236,72,153,0.12);}
+.acard-icon.pink-bg i{color:var(--pink);}
+.acard-icon.gold-bg{background:rgba(251,191,36,0.12);}
+.acard-icon.gold-bg i{color:#fbbf24;}
+.acard-title{font-size:13px;font-weight:700;margin-bottom:2px;}
+.acard-sub{font-size:11px;color:var(--muted);}
+.highlight-box{
+  background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(6,182,212,0.08));
+  border:1px solid rgba(139,92,246,0.2);border-radius:12px;
+  padding:18px 20px;margin-top:20px;
+}
+.highlight-box p{font-size:13px;color:var(--muted);line-height:1.75;}
+.highlight-box strong{color:var(--accent2);}
 
 /* SKILLS */
-.skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-.skill-card {
-  background:var(--card); border:1px solid var(--border); border-radius:14px;
-  padding:24px; transition:transform .2s, border-color .2s;
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.skill-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:22px;transition:transform .2s,border-color .2s;
 }
-.skill-card:hover { transform:translateY(-4px); border-color:var(--accent2); }
-.skill-icon { font-size:28px; margin-bottom:12px; }
-.skill-cat { font-size:13px; font-weight:700; margin-bottom:12px; color:var(--text); }
-.skill-tags { display:flex; flex-wrap:wrap; gap:7px; }
-.tag {
-  background:rgba(139,92,246,0.1); border:1px solid rgba(139,92,246,0.2);
-  color:var(--accent2); font-size:11px; padding:4px 10px; border-radius:20px;
+.skill-card:hover{transform:translateY(-4px);border-color:var(--accent2);}
+.skill-icon-wrap{
+  width:44px;height:44px;border-radius:10px;margin-bottom:14px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(139,92,246,0.12);
 }
-.tag.teal { background:rgba(6,182,212,0.1); border-color:rgba(6,182,212,0.2); color:var(--teal); }
-.tag.pink { background:rgba(236,72,153,0.1); border-color:rgba(236,72,153,0.2); color:var(--pink); }
+.skill-icon-wrap i{font-size:18px;color:var(--accent2);}
+.skill-icon-wrap.teal{background:rgba(6,182,212,0.12);}
+.skill-icon-wrap.teal i{color:var(--teal);}
+.skill-icon-wrap.pink{background:rgba(236,72,153,0.12);}
+.skill-icon-wrap.pink i{color:var(--pink);}
+.skill-cat{font-size:13px;font-weight:700;margin-bottom:10px;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2);color:var(--accent2);font-size:11px;padding:3px 9px;border-radius:20px;}
+.tag.teal{background:rgba(6,182,212,0.1);border-color:rgba(6,182,212,0.2);color:var(--teal);}
+.tag.pink{background:rgba(236,72,153,0.1);border-color:rgba(236,72,153,0.2);color:var(--pink);}
 
 /* PROJECTS */
-.projects-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
-.proj-card {
-  background:var(--card); border:1px solid var(--border); border-radius:14px;
-  padding:28px; transition:transform .2s, border-color .2s; position:relative; overflow:hidden;
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.proj-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:24px;transition:transform .2s,border-color .2s;position:relative;overflow:hidden;
 }
-.proj-card::before {
-  content:''; position:absolute; top:0; left:0; right:0; height:3px;
-  background:linear-gradient(135deg,var(--accent),var(--teal));
-}
-.proj-card:hover { transform:translateY(-4px); border-color:var(--accent); }
-.proj-badge {
-  display:inline-block; font-size:10px; font-weight:700; padding:3px 10px;
-  border-radius:20px; margin-bottom:14px; text-transform:uppercase; letter-spacing:1px;
-}
-.badge-ml { background:rgba(139,92,246,0.15); color:var(--accent2); }
-.badge-data { background:rgba(6,182,212,0.15); color:var(--teal); }
-.badge-hci { background:rgba(236,72,153,0.15); color:var(--pink); }
-.badge-ent { background:rgba(251,191,36,0.15); color:#fbbf24; }
-.proj-title { font-size:16px; font-weight:700; margin-bottom:10px; }
-.proj-desc { font-size:13px; color:var(--muted); line-height:1.7; margin-bottom:16px; }
-.proj-stack { display:flex; flex-wrap:wrap; gap:7px; }
-.stack-tag { background:rgba(255,255,255,0.05); color:var(--muted); font-size:11px; padding:3px 9px; border-radius:4px; }
-
-/* TIMELINE */
-.timeline { position:relative; padding-left:28px; }
-.timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--border); }
-.titem { position:relative; margin-bottom:40px; }
-.titem::before {
-  content:''; position:absolute; left:-34px; top:6px;
-  width:12px; height:12px; border-radius:50%;
-  background:linear-gradient(135deg,var(--accent),var(--teal));
-  border:2px solid var(--bg);
-}
-.tdate { font-size:11px; color:var(--accent2); font-weight:700; margin-bottom:4px; text-transform:uppercase; letter-spacing:1px; }
-.ttitle { font-size:16px; font-weight:700; margin-bottom:4px; }
-.torg { font-size:13px; color:var(--teal); margin-bottom:8px; }
-.tdesc { font-size:13px; color:var(--muted); line-height:1.7; }
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,var(--accent),var(--teal));}
+.proj-card:hover{transform:translateY(-4px);border-color:var(--accent);}
+.proj-badge{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;}
+.proj-badge i{font-size:9px;}
+.badge-ml{background:rgba(139,92,246,0.15);color:var(--accent2);}
+.badge-data{background:rgba(6,182,212,0.15);color:var(--teal);}
+.badge-hci{background:rgba(236,72,153,0.15);color:var(--pink);}
+.badge-ent{background:rgba(251,191,36,0.15);color:#fbbf24;}
+.proj-title{font-size:15px;font-weight:700;margin-bottom:10px;}
+.proj-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:14px;}
+.proj-stack{display:flex;flex-wrap:wrap;gap:6px;}
+.stack-tag{background:rgba(255,255,255,0.05);color:var(--muted);font-size:11px;padding:3px 8px;border-radius:4px;}
 
 /* CONTACT */
-.contact-wrap { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
-.contact-info { display:flex; flex-direction:column; gap:16px; }
-.citem {
-  background:var(--card); border:1px solid var(--border); border-radius:12px;
-  padding:18px 20px; display:flex; align-items:center; gap:14px;
-  text-decoration:none; transition:border-color .2s;
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+.contact-info{display:flex;flex-direction:column;gap:14px;}
+.citem{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:16px 18px;display:flex;align-items:center;gap:14px;
+  text-decoration:none;transition:border-color .2s;
 }
-.citem:hover { border-color:var(--accent2); }
-.citem-icon { font-size:20px; }
-.citem-label { font-size:11px; color:var(--muted); margin-bottom:2px; }
-.citem-val { font-size:14px; color:var(--text); font-weight:600; }
-.contact-msg { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:32px; }
-.contact-msg h3 { font-size:18px; font-weight:700; margin-bottom:12px; }
-.contact-msg p { font-size:14px; color:var(--muted); line-height:1.8; margin-bottom:20px; }
-.availability {
-  display:inline-flex; align-items:center; gap:8px;
-  background:rgba(6,182,212,0.1); border:1px solid rgba(6,182,212,0.25);
-  color:var(--teal); font-size:12px; padding:8px 16px; border-radius:20px;
+.citem:hover{border-color:var(--accent2);}
+.citem-icon{
+  width:38px;height:38px;border-radius:8px;flex-shrink:0;
+  background:rgba(139,92,246,0.12);display:flex;align-items:center;justify-content:center;
 }
+.citem-icon i{font-size:15px;color:var(--accent2);}
+.citem-icon.teal{background:rgba(6,182,212,0.12);}
+.citem-icon.teal i{color:var(--teal);}
+.citem-label{font-size:10px;color:var(--muted);margin-bottom:2px;}
+.citem-val{font-size:13px;color:var(--text);font-weight:600;}
+.contact-msg{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;}
+.contact-msg h3{font-size:17px;font-weight:700;margin-bottom:10px;}
+.contact-msg p{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:16px;}
+.availability{display:inline-flex;align-items:center;gap:8px;background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.25);color:var(--teal);font-size:12px;padding:7px 14px;border-radius:20px;}
 
-/* FOOTER */
-footer {
-  text-align:center; padding:32px; border-top:1px solid var(--border);
-  color:var(--muted); font-size:13px;
-}
-footer span { background:linear-gradient(135deg,var(--accent2),var(--teal)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; font-weight:700; }
+footer{text-align:center;padding:28px 5%;border-top:1px solid var(--border);color:var(--muted);font-size:13px;}
+footer span{background:linear-gradient(135deg,var(--accent2),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;}
 
-/* SCROLL FADE */
-.fade { opacity:0; transform:translateY(24px); transition:opacity .6s, transform .6s; }
-.fade.visible { opacity:1; transform:none; }
+.fade{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s;}
+.fade.visible{opacity:1;transform:none;}
+
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr;}
+  .skills-grid{grid-template-columns:repeat(2,1fr);}
+  .projects-grid{grid-template-columns:1fr;}
+  .contact-wrap{grid-template-columns:1fr;}
+  #home{flex-direction:column-reverse;text-align:center;padding-top:100px;}
+  .hero-desc{margin:0 auto 28px;}
+  .hero-btns{justify-content:center;}
+  .hero-stats{justify-content:center;}
+}
+@media(max-width:600px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .sec{padding:60px 5%;}
+  .skills-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:20px;}
+  .line{margin:14px 0 32px;}
+}
+@media(max-width:380px){
+  .hero-btns{flex-direction:column;}
+  .btn-p,.btn-o{text-align:center;}
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="logo">Ritika G M</div>
   <ul class="nav-links">
@@ -206,88 +225,68 @@ footer span { background:linear-gradient(135deg,var(--accent2),var(--teal)); -we
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMenu()">Home</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
 
 <!-- HERO -->
 <section id="home">
   <div class="hero-left">
     <div class="hero-badge"><span class="dot"></span> Open to HCI MS Applications — Germany 2026</div>
-    <h1 class="hero-name">
-      Hi, I'm<br><span class="grad">Ritika G M</span>
-    </h1>
+    <h1 class="hero-name">Hi, I'm<br><span class="grad">Ritika G M</span></h1>
     <p class="hero-role">SAP Consultant · CS Engineer · HCI Enthusiast</p>
-    <p class="hero-desc">
-      B.Tech Computer Science graduate with 2+ years of enterprise IT experience at LTIMindtree.
-      Passionate about the intersection of intelligent systems, user experience, and human-centred design.
-      Applying for M.Sc. Human Computer Interaction programs in Germany.
-    </p>
+    <p class="hero-desc">B.Tech CSE graduate with 2+ years at LTIMindtree. Passionate about intelligent, human-centred design. Applying for M.Sc. Human Computer Interaction in Germany.</p>
     <div class="hero-btns">
-      <a href="#projects" class="btn-p">View Projects</a>
-      <a href="#contact" class="btn-o">Get In Touch</a>
+      <a href="#projects" class="btn-p"><i class="fa-solid fa-briefcase" style="margin-right:7px"></i>View Projects</a>
+      <a href="#contact" class="btn-o"><i class="fa-solid fa-envelope" style="margin-right:7px"></i>Get In Touch</a>
     </div>
     <div class="hero-stats">
       <div><div class="stat-n">7.65</div><div class="stat-l">B.Tech CGPA</div></div>
-      <div><div class="stat-n">2+</div><div class="stat-l">Years Experience</div></div>
+      <div><div class="stat-n">2+</div><div class="stat-l">Years Exp.</div></div>
       <div><div class="stat-n">6.5</div><div class="stat-l">IELTS Score</div></div>
       <div><div class="stat-n">5+</div><div class="stat-l">Projects</div></div>
     </div>
   </div>
   <div class="hero-right">
-    <div style="position:relative;">
-      <div class="avatar-glow"></div>
-      <div class="avatar-wrap">
-        <div class="avatar-inner">👩‍💻</div>
+    <div class="avatar-wrap">
+      <div class="avatar-inner">
+        <img src="ritika.jpg" alt="Ritika G M">
       </div>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" style="background:var(--bg2); padding:100px 0;">
-  <div class="sec fade">
+<section style="background:var(--bg2);padding:80px 0;">
+  <div class="sec fade" id="about">
     <div class="sec-label">Who I Am</div>
     <h2 class="sec-h">About <span>Me</span></h2>
     <div class="line"></div>
     <div class="about-grid">
       <div>
-        <p class="about-p">
-          I am a Computer Science and Engineering graduate from <strong>Dayananda Sagar University, Bengaluru</strong> (CGPA: 7.65, First Class, 2023). My academic journey covered a strong foundation in algorithms, data structures, software engineering, database systems, natural language processing, and data science.
-        </p>
-        <p class="about-p">
-          After graduation, I joined <strong>LTIMindtree</strong> as a Package Implementation Consultant specialising in SAP Basis — working on S/4HANA migrations, system performance optimisation, and enterprise IT infrastructure. I received the <strong>Star Performer Award</strong> and multiple Super Crew Awards for my contributions.
-        </p>
-        <p class="about-p">
-          My interest in Human Computer Interaction grew from observing how complex enterprise systems often fail users — not because of technical limitations, but due to poor interface design. I want to bridge this gap by studying HCI and building more intelligent, human-centred systems.
-        </p>
+        <p class="about-p">I am a Computer Science and Engineering graduate from <strong>Dayananda Sagar University, Bengaluru</strong> (CGPA: 7.65, First Class, 2023). My academics covered algorithms, data structures, NLP, software engineering, and data science.</p>
+        <p class="about-p">After graduation, I joined <strong>LTIMindtree</strong> as a Package Implementation Consultant in SAP Basis — working on S/4HANA migrations, system performance optimisation, and enterprise IT infrastructure. I received the <strong>Star Performer Award</strong> and multiple Super Crew Awards.</p>
+        <p class="about-p">My interest in HCI grew from observing how complex enterprise systems frustrate users — not due to technology, but poor interface design. I want to bridge this gap by studying Human Computer Interaction.</p>
         <div class="highlight-box">
-          <p>My final year thesis — <strong>"Detection of Thyroid Disorder using Machine Learning Approach"</strong> — reflects my interest in applying AI to solve real healthcare problems. This project strengthened my belief in building systems that are not only technically sound but also accessible and usable by non-technical users.</p>
+          <p>My thesis — <strong>"Detection of Thyroid Disorder using Machine Learning"</strong> — strengthened my belief in building systems that are not only technically sound but also accessible and usable by non-technical users.</p>
         </div>
       </div>
       <div class="about-cards">
-        <div class="acard">
-          <div class="acard-icon">🎓</div>
-          <div><div class="acard-title">B.Tech — Computer Science & Engineering</div><div class="acard-sub">Dayananda Sagar University, 2019–2023 | CGPA: 7.65</div></div>
-        </div>
-        <div class="acard">
-          <div class="acard-icon">💼</div>
-          <div><div class="acard-title">Package Implementation Consultant</div><div class="acard-sub">LTIMindtree, Bengaluru | 2023–Present</div></div>
-        </div>
-        <div class="acard">
-          <div class="acard-icon">🌍</div>
-          <div><div class="acard-title">Applying — M.Sc. HCI</div><div class="acard-sub">Germany | Winter Semester 2026</div></div>
-        </div>
-        <div class="acard">
-          <div class="acard-icon">🗣️</div>
-          <div><div class="acard-title">Languages</div><div class="acard-sub">English (IELTS 6.5) · Telugu (Native) · Hindi · German (A1)</div></div>
-        </div>
-        <div class="acard">
-          <div class="acard-icon">📍</div>
-          <div><div class="acard-title">Location</div><div class="acard-sub">Bengaluru, Karnataka, India</div></div>
-        </div>
-        <div class="acard">
-          <div class="acard-icon">🏆</div>
-          <div><div class="acard-title">Awards</div><div class="acard-sub">Star Performer · Hi-Five Award · 3× Super Crew Award</div></div>
-        </div>
+        <div class="acard"><div class="acard-icon"><i class="fa-solid fa-graduation-cap"></i></div><div><div class="acard-title">B.Tech — CSE</div><div class="acard-sub">Dayananda Sagar University · CGPA: 7.65 · 2023</div></div></div>
+        <div class="acard"><div class="acard-icon teal-bg"><i class="fa-solid fa-briefcase"></i></div><div><div class="acard-title">SAP Consultant</div><div class="acard-sub">LTIMindtree, Bengaluru · 2023–Present</div></div></div>
+        <div class="acard"><div class="acard-icon pink-bg"><i class="fa-solid fa-earth-europe"></i></div><div><div class="acard-title">Applying — M.Sc. HCI</div><div class="acard-sub">Germany · Winter Semester 2026</div></div></div>
+        <div class="acard"><div class="acard-icon gold-bg"><i class="fa-solid fa-language"></i></div><div><div class="acard-title">Languages</div><div class="acard-sub">English (IELTS 6.5) · Telugu · Hindi · German A1</div></div></div>
+        <div class="acard"><div class="acard-icon teal-bg"><i class="fa-solid fa-location-dot"></i></div><div><div class="acard-title">Location</div><div class="acard-sub">Bengaluru, Karnataka, India</div></div></div>
+        <div class="acard"><div class="acard-icon"><i class="fa-solid fa-trophy"></i></div><div><div class="acard-title">Awards</div><div class="acard-sub">Star Performer · Hi-Five · 3× Super Crew</div></div></div>
       </div>
     </div>
   </div>
@@ -300,126 +299,29 @@ footer span { background:linear-gradient(135deg,var(--accent2),var(--teal)); -we
     <h2 class="sec-h">Skills &amp; <span>Expertise</span></h2>
     <div class="line"></div>
     <div class="skills-grid">
-      <div class="skill-card">
-        <div class="skill-icon">💻</div>
-        <div class="skill-cat">Programming Languages</div>
-        <div class="skill-tags">
-          <span class="tag">Python</span><span class="tag">C</span><span class="tag">Java</span>
-          <span class="tag">SQL</span><span class="tag">JavaScript</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🤖</div>
-        <div class="skill-cat">AI / Machine Learning</div>
-        <div class="skill-tags">
-          <span class="tag teal">Machine Learning</span><span class="tag teal">Deep Learning</span>
-          <span class="tag teal">NLP</span><span class="tag teal">Data Science</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🖥️</div>
-        <div class="skill-cat">HCI &amp; Design Thinking</div>
-        <div class="skill-tags">
-          <span class="tag pink">User Research</span><span class="tag pink">UX Design</span>
-          <span class="tag pink">Usability</span><span class="tag pink">Accessibility</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🗄️</div>
-        <div class="skill-cat">Databases &amp; Analytics</div>
-        <div class="skill-tags">
-          <span class="tag">MySQL</span><span class="tag">SAP HANA</span>
-          <span class="tag">Data Visualisation</span><span class="tag">Network Analytics</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">⚙️</div>
-        <div class="skill-cat">Enterprise IT (SAP)</div>
-        <div class="skill-tags">
-          <span class="tag teal">SAP S/4HANA</span><span class="tag teal">SAP Basis</span>
-          <span class="tag teal">System Migration</span><span class="tag teal">Performance Tuning</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <div class="skill-icon">🌐</div>
-        <div class="skill-cat">Web &amp; Software Engineering</div>
-        <div class="skill-tags">
-          <span class="tag">HTML/CSS</span><span class="tag">Flask</span>
-          <span class="tag">Software Engineering</span><span class="tag">SDLC</span>
-        </div>
-      </div>
+      <div class="skill-card"><div class="skill-icon-wrap"><i class="fa-solid fa-code"></i></div><div class="skill-cat">Programming</div><div class="skill-tags"><span class="tag">Python</span><span class="tag">C</span><span class="tag">Java</span><span class="tag">SQL</span><span class="tag">JavaScript</span></div></div>
+      <div class="skill-card"><div class="skill-icon-wrap teal"><i class="fa-solid fa-brain"></i></div><div class="skill-cat">AI / Machine Learning</div><div class="skill-tags"><span class="tag teal">Machine Learning</span><span class="tag teal">Deep Learning</span><span class="tag teal">NLP</span><span class="tag teal">Data Science</span></div></div>
+      <div class="skill-card"><div class="skill-icon-wrap pink"><i class="fa-solid fa-desktop"></i></div><div class="skill-cat">HCI &amp; Design</div><div class="skill-tags"><span class="tag pink">User Research</span><span class="tag pink">UX Design</span><span class="tag pink">Usability</span><span class="tag pink">Accessibility</span></div></div>
+      <div class="skill-card"><div class="skill-icon-wrap"><i class="fa-solid fa-database"></i></div><div class="skill-cat">Databases &amp; Analytics</div><div class="skill-tags"><span class="tag">MySQL</span><span class="tag">SAP HANA</span><span class="tag">Data Visualisation</span></div></div>
+      <div class="skill-card"><div class="skill-icon-wrap teal"><i class="fa-solid fa-server"></i></div><div class="skill-cat">Enterprise IT (SAP)</div><div class="skill-tags"><span class="tag teal">SAP S/4HANA</span><span class="tag teal">SAP Basis</span><span class="tag teal">System Migration</span></div></div>
+      <div class="skill-card"><div class="skill-icon-wrap pink"><i class="fa-solid fa-globe"></i></div><div class="skill-cat">Web &amp; Software Eng.</div><div class="skill-tags"><span class="tag pink">HTML/CSS</span><span class="tag pink">Flask</span><span class="tag pink">SDLC</span><span class="tag pink">Git</span></div></div>
     </div>
   </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" style="background:var(--bg2); padding:100px 0;">
+<section style="background:var(--bg2);padding:80px 0;" id="projects">
   <div class="sec fade">
     <div class="sec-label">My Work</div>
     <h2 class="sec-h">Featured <span>Projects</span></h2>
     <div class="line"></div>
     <div class="projects-grid">
-
-      <div class="proj-card">
-        <span class="proj-badge badge-ml">ML · Healthcare</span>
-        <div class="proj-title">Detection of Thyroid Disorder using Machine Learning</div>
-        <div class="proj-desc">Final year B.Tech thesis. Built a machine learning system to classify thyroid conditions using patient health data. Applied feature engineering, model selection, and evaluation metrics to improve clinical decision support. Focused on making the system interpretable for non-technical healthcare users — an early interest in HCI for medical systems.</div>
-        <div class="proj-stack">
-          <span class="stack-tag">Python</span><span class="stack-tag">ML</span>
-          <span class="stack-tag">Healthcare Data</span><span class="stack-tag">Classification</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <span class="proj-badge badge-data">Data Analytics</span>
-        <div class="proj-title">SAP S/4HANA System Performance Optimisation</div>
-        <div class="proj-desc">Professional project at LTIMindtree. Analysed SAP system performance bottlenecks across enterprise landscapes and implemented configuration optimisations resulting in a 20% improvement in system speed. Worked on making complex system dashboards more intuitive for administrators — a practical application of usability principles in enterprise IT.</div>
-        <div class="proj-stack">
-          <span class="stack-tag">SAP HANA</span><span class="stack-tag">System Analytics</span>
-          <span class="stack-tag">Performance Tuning</span><span class="stack-tag">Dashboard Design</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <span class="proj-badge badge-hci">NLP · HCI</span>
-        <div class="proj-title">Natural Language Processing — Text Analytics System</div>
-        <div class="proj-desc">Academic project from NLP course (Grade: A). Built a text processing pipeline covering tokenisation, POS tagging, sentiment analysis, and language modelling. Explored how NLP can improve human-computer interaction through conversational interfaces and intelligent text processing systems. Received Grade A for the course.</div>
-        <div class="proj-stack">
-          <span class="stack-tag">Python</span><span class="stack-tag">NLP</span>
-          <span class="stack-tag">Sentiment Analysis</span><span class="stack-tag">Language Models</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <span class="proj-badge badge-data">Networks · Data</span>
-        <div class="proj-title">Social Networks and Analytics</div>
-        <div class="proj-desc">Academic project (Grade: O — Outstanding, 10/10). Analysed social network graphs using statistical and probabilistic methods. Applied community detection, influence maximisation, and Markov chain models to understand information propagation in large networks. Achieved the highest grade possible in this course.</div>
-        <div class="proj-stack">
-          <span class="stack-tag">Python</span><span class="stack-tag">Graph Theory</span>
-          <span class="stack-tag">Statistics</span><span class="stack-tag">Network Analysis</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <span class="proj-badge badge-ent">Enterprise IT</span>
-        <div class="proj-title">S/4HANA Production Migration — Zero Downtime</div>
-        <div class="proj-desc">Professional project at LTIMindtree. Planned and executed a zero-downtime SAP S/4HANA production migration across complex enterprise landscapes. Coordinated cross-functional teams including infrastructure, functional consultants, and end users. Received Star Performer Award for this initiative.</div>
-        <div class="proj-stack">
-          <span class="stack-tag">SAP S/4HANA</span><span class="stack-tag">Migration</span>
-          <span class="stack-tag">Project Management</span><span class="stack-tag">Team Coordination</span>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <span class="proj-badge badge-ml">ML · Database</span>
-        <div class="proj-title">Database Management Systems — Advanced Queries</div>
-        <div class="proj-desc">Academic project (Grade: B+). Designed and implemented relational database systems with complex SQL queries, normalisation, ER modelling, and transaction management. Also explored how database interfaces can be made more accessible to non-technical users — an early exploration of HCI principles applied to data management tools.</div>
-        <div class="proj-stack">
-          <span class="stack-tag">SQL</span><span class="stack-tag">MySQL</span>
-          <span class="stack-tag">Database Design</span><span class="stack-tag">UI Accessibility</span>
-        </div>
-      </div>
-
+      <div class="proj-card"><span class="proj-badge badge-ml"><i class="fa-solid fa-heart-pulse"></i> ML · Healthcare</span><div class="proj-title">Thyroid Disorder Detection using Machine Learning</div><div class="proj-desc">Final year B.Tech thesis. Built an ML classification system for thyroid conditions. Focused on model interpretability for non-technical healthcare users — an early interest in HCI for medical systems.</div><div class="proj-stack"><span class="stack-tag">Python</span><span class="stack-tag">ML</span><span class="stack-tag">Healthcare Data</span></div></div>
+      <div class="proj-card"><span class="proj-badge badge-data"><i class="fa-solid fa-chart-line"></i> Enterprise Analytics</span><div class="proj-title">SAP S/4HANA Performance Optimisation</div><div class="proj-desc">Professional project at LTIMindtree. Analysed SAP system bottlenecks and implemented optimisations resulting in 20% performance improvement. Applied usability thinking to make complex dashboards more intuitive.</div><div class="proj-stack"><span class="stack-tag">SAP HANA</span><span class="stack-tag">System Analytics</span><span class="stack-tag">Performance Tuning</span></div></div>
+      <div class="proj-card"><span class="proj-badge badge-hci"><i class="fa-solid fa-comment-dots"></i> NLP · HCI</span><div class="proj-title">Natural Language Processing — Text Analytics</div><div class="proj-desc">Academic project (Grade: A). Built a text processing pipeline covering tokenisation, POS tagging, and sentiment analysis. Explored NLP as a bridge for more natural human-computer interaction.</div><div class="proj-stack"><span class="stack-tag">Python</span><span class="stack-tag">NLP</span><span class="stack-tag">Sentiment Analysis</span></div></div>
+      <div class="proj-card"><span class="proj-badge badge-data"><i class="fa-solid fa-diagram-project"></i> Networks · Data</span><div class="proj-title">Social Networks and Analytics</div><div class="proj-desc">Academic project (Grade: O — Outstanding, 10/10). Analysed social network graphs using statistical and probabilistic models. Applied community detection and influence maximisation algorithms.</div><div class="proj-stack"><span class="stack-tag">Python</span><span class="stack-tag">Graph Theory</span><span class="stack-tag">Statistics</span></div></div>
+      <div class="proj-card"><span class="proj-badge badge-ent"><i class="fa-solid fa-arrow-right-arrow-left"></i> Enterprise IT</span><div class="proj-title">S/4HANA Production Migration — Zero Downtime</div><div class="proj-desc">Professional project at LTIMindtree. Executed a zero-downtime SAP S/4HANA migration across complex enterprise landscapes. Coordinated cross-functional teams. Received Star Performer Award.</div><div class="proj-stack"><span class="stack-tag">SAP S/4HANA</span><span class="stack-tag">Migration</span><span class="stack-tag">Project Management</span></div></div>
+      <div class="proj-card"><span class="proj-badge badge-ml"><i class="fa-solid fa-table"></i> Database · UX</span><div class="proj-title">Database Systems — Accessible Interface Design</div><div class="proj-desc">Academic project (Grade: B+). Designed relational database systems with complex SQL and ER modelling. Explored how database interfaces can be made more accessible to non-technical users.</div><div class="proj-stack"><span class="stack-tag">SQL</span><span class="stack-tag">MySQL</span><span class="stack-tag">Database Design</span></div></div>
     </div>
   </div>
 </section>
@@ -432,27 +334,15 @@ footer span { background:linear-gradient(135deg,var(--accent2),var(--teal)); -we
     <div class="line"></div>
     <div class="contact-wrap">
       <div class="contact-info">
-        <a class="citem" href="mailto:ritikameena1980@gmail.com">
-          <div class="citem-icon">📧</div>
-          <div><div class="citem-label">Email</div><div class="citem-val">ritikameena1980@gmail.com</div></div>
-        </a>
-        <a class="citem" href="https://www.linkedin.com/in/ritika-g-m-1aba58235" target="_blank">
-          <div class="citem-icon">🔗</div>
-          <div><div class="citem-label">LinkedIn</div><div class="citem-val">linkedin.com/in/ritika-g-m</div></div>
-        </a>
-        <div class="citem">
-          <div class="citem-icon">📍</div>
-          <div><div class="citem-label">Location</div><div class="citem-val">Bengaluru, Karnataka, India</div></div>
-        </div>
-        <div class="citem">
-          <div class="citem-icon">🎓</div>
-          <div><div class="citem-label">Applying For</div><div class="citem-val">M.Sc. Human Computer Interaction — Germany 2026</div></div>
-        </div>
+        <a class="citem" href="mailto:ritikameena1980@gmail.com"><div class="citem-icon"><i class="fa-solid fa-envelope"></i></div><div><div class="citem-label">Email</div><div class="citem-val">ritikameena1980@gmail.com</div></div></a>
+        <a class="citem" href="https://www.linkedin.com/in/ritika-g-m-1aba58235" target="_blank"><div class="citem-icon"><i class="fa-brands fa-linkedin-in"></i></div><div><div class="citem-label">LinkedIn</div><div class="citem-val">linkedin.com/in/ritika-g-m</div></div></a>
+        <div class="citem"><div class="citem-icon teal"><i class="fa-solid fa-location-dot"></i></div><div><div class="citem-label">Location</div><div class="citem-val">Bengaluru, Karnataka, India</div></div></div>
+        <div class="citem"><div class="citem-icon teal"><i class="fa-solid fa-graduation-cap"></i></div><div><div class="citem-label">Applying For</div><div class="citem-val">M.Sc. HCI — Germany 2026</div></div></div>
       </div>
       <div class="contact-msg">
         <h3>Why HCI?</h3>
-        <p>Throughout my career in enterprise IT, I have seen how poorly designed interfaces create friction, reduce productivity, and frustrate users — even when the underlying technology is excellent. I want to study Human Computer Interaction to understand the science behind building systems that people actually enjoy using.</p>
-        <p>My background in computer science, machine learning, and NLP gives me a strong technical foundation. HCI will give me the human-centred design lens to build systems that are not only intelligent but truly usable.</p>
+        <p>Throughout my career in enterprise IT, I have seen how poorly designed interfaces create friction — even when the underlying technology is excellent. I want to study HCI to understand the science behind building systems people truly enjoy using.</p>
+        <p>My background in CS, ML, and NLP gives me a strong technical foundation. HCI will give me the human-centred design lens to build systems that are not only intelligent but truly usable.</p>
         <div class="availability"><span class="dot"></span> Available for interviews &amp; portfolio review</div>
       </div>
     </div>
@@ -460,12 +350,19 @@ footer span { background:linear-gradient(135deg,var(--accent2),var(--teal)); -we
 </section>
 
 <footer>
-  <p>© 2026 <span>Ritika G M</span> · B.Tech CSE · LTIMindtree · Applying for M.Sc. HCI in Germany</p>
+  <p>© 2026 <span>Ritika G M</span> · B.Tech CSE · LTIMindtree · Applying for M.Sc. HCI — Germany</p>
 </footer>
 
 <script>
-  const obs = new IntersectionObserver(els => els.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.1});
+  const obs = new IntersectionObserver(els => els.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:0.08});
   document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+  function toggleMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
+  function closeMenu(){ document.getElementById('mobileMenu').classList.remove('open'); }
+  document.addEventListener('click', e => {
+    const menu = document.getElementById('mobileMenu');
+    const ham = document.querySelector('.hamburger');
+    if(!menu.contains(e.target) && !ham.contains(e.target)) menu.classList.remove('open');
+  });
 </script>
 </body>
 </html>
